@@ -1,0 +1,227 @@
+// Breakpoints
+
+$smartphone: 320px;
+$mini: 540px;
+$portrait: 768px; 	
+$landscape: 1024px;
+$desktop: 1280px;
+
+$basis: $desktop;
+
+// this is the article and section height
+$sectionHeight: 700px;
+
+
+// This is calculation width and height for every breakpoint. You specify just the largest for 1280
+// @mixin calcBreakpoints($width, $height)
+
+// for example:
+// @include calcBreakpoints(1000px, 800px)
+// 1000px is here the width in breakpoint 1280px and now creates all the width for all breakpoints below
+// 800px is here the height in breakpoint 1280px and now creates all the height for all breakpoints below
+
+// This is for all attributes. You can put in whatever you want. $attributes is working with all css attributes. $value is working with all px, em, rem and so on
+// @mixin calcBreakpoint($value, $attribute)
+// Examples:
+// @include calcBreakpoint(1000px, width)
+// 1000px in 1280px breakpoint now creating all width for all other breakpoints
+
+// @include calcBreakpoint(10em, margin-top)
+// 10em in 1280px breakpoint for margin-top, creating now all other breakpoints
+
+
+// This is for fonts but you can use it too for all other attributes
+// @mixin calcBreakpointFonts($value, $attribute, $smallest)
+// $smallest is a value that the attribute should never go below.
+// Therefore if you want to calculate all fonts for lets say 4em font-size but the font size should never go below 1em then do this:
+// @mixin calcBreakpointFonts(4em, font-size, 1em)
+// This mixin is not rounding. 
+
+
+
+
+
+// basis is alway the desktop size
+@mixin calcBreakpoints($width, $height) {
+
+	$multiplierHeight: $height / $basis;
+	$multiplierWidth: $width / $basis;
+
+	width: round($multiplierWidth*$smartphone);
+	height: round($multiplierHeight*$smartphone);
+	
+	@include respond-min($mini) {
+		width: round($multiplierWidth*$mini);
+		height: round($multiplierHeight*$mini);
+	}
+
+	@include respond-min($portrait) {
+		width: round($multiplierWidth*$portrait);
+		height: round($multiplierHeight*$portrait);
+	}
+	@include respond-min($landscape) {
+		width: round($multiplierWidth*$landscape);
+		height: round($multiplierHeight*$landscape);
+	}
+	@include respond-min($desktop) {
+		width: $width;
+		height: $height;
+	}
+}
+
+@mixin calcBreakpoint($value, $attribute) {
+	$multiplierValue: $value / $basis;
+
+	#{$attribute}: round($multiplierValue*$smartphone);
+	
+	@include respond-min($mini) {
+		#{$attribute}: round($multiplierValue*$mini);				
+	}
+
+	@include respond-min($portrait) {
+		#{$attribute}: round($multiplierValue*$portrait);				
+	}
+	@include respond-min($landscape) {
+		#{$attribute}: round($multiplierValue*$landscape);
+	}
+	@include respond-min($desktop) {
+		#{$attribute}: $value;
+	}
+}
+
+@mixin calcBreakpointFonts($value, $attribute, $smallest) {
+	$multiplierValue: $value / $basis;
+
+	@if $multiplierValue*$smartphone < $smallest {
+		#{$attribute}: $smallest;
+	} 
+	@else {
+		#{$attribute}: $multiplierValue*$smartphone;
+	}
+	
+	
+	@include respond-min($mini) {
+		
+		@if $multiplierValue*$mini < $smallest {
+			#{$attribute}: $smallest;
+		} 
+		@else {
+			#{$attribute}: $multiplierValue*$mini;
+		}
+	}
+
+	@include respond-min($portrait) {
+
+		@if $multiplierValue*$portrait < $smallest {
+			#{$attribute}: $smallest;
+		} 
+		@else {
+			#{$attribute}: $multiplierValue*$portrait;
+		}		
+	}
+	@include respond-min($landscape) {
+		@if $multiplierValue*$landscape < $smallest {
+			#{$attribute}: $smallest;
+		} 
+		@else {
+			#{$attribute}: $multiplierValue*$landscape;
+		}
+	}
+	@include respond-min($desktop) {
+		#{$attribute}: $value;
+	}
+}
+
+
+// width, height, margin-left, margin-top
+@mixin calcBreakpointLine($width, $height, $marginleft, $margintop) {
+
+	$multiplierHeight: $height / $basis;
+	$multiplierWidth: $width / $basis;
+
+	$multiplierMarginLeft: $marginleft / $basis;
+	$multiplierMarginTop: $margintop / $basis;
+
+	width: round($multiplierWidth*$smartphone);
+	height: round($multiplierHeight*$smartphone);
+	margin-left: round($multiplierMarginLeft*$smartphone);
+	margin-top: round($multiplierMarginTop*$smartphone);
+	
+	@include respond-min($mini) {
+		width: round($multiplierWidth*$mini);
+		height: round($multiplierHeight*$mini);
+		margin-left: round($multiplierMarginLeft*$mini);
+		margin-top: round($multiplierMarginTop*$mini);
+	}
+
+	@include respond-min($portrait) {
+		width: round($multiplierWidth*$portrait);
+		height: round($multiplierHeight*$portrait);
+		margin-left: round($multiplierMarginLeft*$portrait);
+		margin-top: round($multiplierMarginTop*$portrait);
+	}
+	@include respond-min($landscape) {
+		width: round($multiplierWidth*$landscape);
+		height: round($multiplierHeight*$landscape);
+		margin-left: round($multiplierMarginLeft*$landscape);
+		margin-top: round($multiplierMarginTop*$landscape);
+	}
+	@include respond-min($desktop) {
+		width: $width;
+		height: $height;
+		margin-left: $marginleft;
+		margin-top: $margintop;
+	}
+}
+
+
+
+
+
+// Font mix-ins //
+$font8:  0.5em;
+$font9:  0.5625em;
+$font10: 0.625em;
+$font11: 0.6875em;
+$font12: 0.75em;
+$font13: 0.8125em;
+$font14: 0.875em;
+$font15: 0.9375em;
+$font16: 1em;
+$font17: 1.0625em;
+$font18: 1.125em;
+$font20: 1.25em;
+$font21: 1.3125em;
+$font22: 1.375em;
+$font24: 1.5em;
+$font26: 1.625em;
+$font28: 1.75em;
+$font30: 1.875em;
+$font31: 1.9375em;
+$font32: 2em;
+$font36: 2.25em;
+$font38: 2.375em;
+$font40: 2.5em;
+$font44: 2.75em;
+$font48: 3em;
+$font52: 3.25em;
+$font50: 3.125em;
+$font57: 3.5625em;
+
+// Colors //
+
+$white: #ffffff;
+$black: #000000;
+$gray: #f3f3f3;
+$pink: #E20071;
+$green: #52da00;
+/*$yellow: #ffed00;*/
+$yellow: #ede144;
+$red: #e2001a;
+$blue: #4bb0d2;
+$orange: #f5a000;
+$lightGray: #cacaca;
+$darkGray: #969da3;
+
+$mainFontColor: #272727;
+

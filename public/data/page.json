@@ -1,0 +1,15 @@
+[
+
+{"index": "/","template": "homePage", "section": "start", "link": "/"},
+
+{"index": "hunter","template": "homePage","section": "hunter", "link": "/hunter"},
+
+{"index": "artist","template": "homePage","section": "artist", "link": "/artist"},
+
+
+
+{"index": "work","template": "workPage","section": "", "link": "/work"}
+
+
+
+]

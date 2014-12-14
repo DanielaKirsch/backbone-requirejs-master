@@ -1,0 +1,29 @@
+
+# html5 pushstate (history) support:
+<ifModule mod_rewrite.c>
+    RewriteEngine On
+
+    
+    RewriteCond %{HTTP_USER_AGENT} (.*)facebookexternalhit(.*) [NC,OR]
+    RewriteCond %{HTTP_USER_AGENT} (.*)googlebot(.*) [NC,OR]
+    RewriteCond %{HTTP_USER_AGENT} (.*)bingbot(.*) [NC,OR]
+    RewriteCond %{HTTP_USER_AGENT} (.*)yahoo(.*) [NC]
+    RewriteCond %{REQUEST_URI} !\.(gif|jpg|png|svg)$ [NC]
+    RewriteRule ^(.*) http://%{HTTP_HOST}:3000%{REQUEST_URI} [P]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} !=/favicon.ico
+    RewriteCond %{REQUEST_URI} !=/apple-touch-icon-precomposed.png
+    RewriteCond %{REQUEST_URI} !=/apple-touch-icon-72x72-precomposed.png
+    RewriteCond %{REQUEST_URI} !=/apple-touch-icon-114x114-precomposed.png
+    RewriteCond %{REQUEST_URI} !=/apple-touch-icon-144x144-precomposed.png
+    RewriteCond %{REQUEST_URI} !=/public/js/smart.js
+    RewriteCond %{REQUEST_URI} !=/public/js/jquery-1.11.1.min.js
+    RewriteCond %{REQUEST_URI} !=/public/js/jquery.reject.js
+    RewriteCond %{REQUEST_URI} !=/app/main.js
+    RewriteCond %{REQUEST_URI} !=/robots.txt
+    RewriteCond %{REQUEST_URI} !index
+    RewriteRule (.*) /index.html [L]
+
+</ifModule>

@@ -1,0 +1,22 @@
+{
+  "name": "dev-smart-drupal-frontend.de",
+  "version": "0.0.0",
+  "description": "Package file for Phantom.js implementation ",
+  "main": "phantom-server.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@bitbucket.org:helloplugin/smart.git"
+  },
+  "author": "HelloPlugin GmbH",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "~4.4.1",
+    "node-phantom": "~0.2.5"
+  }
+}

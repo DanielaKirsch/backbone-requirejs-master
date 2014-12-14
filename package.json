@@ -1,0 +1,29 @@
+{
+  "name": "danielakirsch.de",
+  "version": "0.0.0",
+  "description": "Frontend danielakirsch.de",
+  "main": "Gruntfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@bitbucket.org:helloplugin/danielakirsch.git"
+  },
+  "author": "HelloPlugin GmbH",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "~0.4.4",
+    "grunt-contrib-sass": "~0.7.3",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-contrib-cssmin": "~0.4.1",
+    "grunt-contrib-concat": "~0.4.0",
+    "jquery":"~2.1.0",
+    "underscore":"~1.6.0",
+    "backbone": "~1.1.2",
+    "grunt-contrib-requirejs": "~0.4.4"
+  }
+}
